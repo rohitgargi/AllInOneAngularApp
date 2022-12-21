@@ -1,0 +1,36 @@
+.profile-container{
+    padding: 20px;
+
+    h1{
+        font-size: 22px;
+    }
+
+    .add-technology{
+        margin-bottom: 10px;
+    }
+
+    &__userForm{
+        .form-group{
+            margin-bottom: 5px;
+            min-height: 84px;
+        }
+        .technologies{
+            h2{
+                font-size: 16px;
+                margin-top: 15px;
+            }
+            ul{
+                list-style: none;
+                padding: 0;
+                .alias{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    .form-switch{
+        input{
+            cursor: pointer;
+        }
+    }
+}
