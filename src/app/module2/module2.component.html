@@ -1,0 +1,32 @@
+<article  class="row tree-container">
+    <h1 [translate]="'page2.heading'">
+       
+    </h1>
+<!-- data-bs-parent="#accordionExample" -->
+
+    <section class="tree-container__search-section col-md-6">
+        <label for="search-tree" [translate]="'page2.searchItem'"></label>
+        <input #input id="search-tree" type="text" class="form-control"  placeholder="Search here">
+    </section>
+
+    <section class="accordion" id="accordionExample">
+        <div class="accordion-item" *ngFor="let parent of showData; let i = index">
+            <h2 class="accordion-header" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-'+parent.id+'-'+i" [attr.aria-expanded]="parent.checked" [attr.aria-controls]="'collapse-'+parent.id+'-'+i" id="heading-{{parent.id}}-{{i}}">
+                <button class="accordion-button grand-parent" >{{parent.label}}</button>
+            </h2>
+
+            <div class="accordion-collapse collapse margin-left-10" id="collapse-{{parent.id}}-{{i}}" [ngClass]="{'show': parent.checked}" [attr.aria-labelledby]="'heading-'+parent.id+'-'+i">
+                <div  *ngFor="let childL1 of parent.children;let i2=index">
+                    <h3 class="accordion-header" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseL2-'+childL1.id+'-'+i2" [attr.aria-expanded]="childL1.checked" [attr.aria-controls]="'collapseL2-'+childL1.id+'-'+i2" id="headingL2-{{childL1.id}}-{{i2}}">
+                        <button class="accordion-button" >{{childL1.label}}</button>
+                    </h3>
+                    <div class="accordion-collapse collapse margin-left-15" [ngClass]="{'show': childL1.checked}" id="collapseL2-{{childL1.id}}-{{i2}}" [attr.aria-labelledby]="'heading-'+childL1.id+'-'+i2">
+                        <div *ngFor="let childL2 of childL1.children">
+                            <h4>{{childL2.label}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
