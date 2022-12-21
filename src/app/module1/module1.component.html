@@ -1,0 +1,107 @@
+<article class="profile-container">
+    <h1 [translate]="'page1.heading'">
+        
+    </h1>
+<!-- 
+    <p [translate]="'PAGE1.sample'">
+        
+    </p> -->
+    <div class="row">
+        <div class="col-md-6">
+            <form id="userForm" class="profile-container__userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label for="username">Name: </label>
+                    <input  class="form-control"  id="username" type="text" formControlName="name">
+                    <div *ngIf="userFormControl['name'].invalid && (userFormControl['name'].dirty || userFormControl['name'].touched)">
+                        <p *ngIf="userFormControl['name'].errors?.['required']" class="text-danger">
+                            Please enter a name.
+                        </p>
+                        <p *ngIf="userFormControl['name'].errors?.['minlength']" class="text-danger">
+                            Please enter atleast 8 character.
+                        </p>
+
+                        <p *ngIf="userFormControl['name'].errors?.['pattern']" class="text-danger">
+                            Please enter valid name. Should only contains characters and space.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailId">Email: </label>
+                    <input class="form-control"  id="emailId" type="email" formControlName="email">
+                    <div *ngIf="userFormControl['email'].invalid && (userFormControl['email'].dirty || userFormControl['email'].touched)">
+                        <p *ngIf="userFormControl['email'].errors?.['required']" class="text-danger">
+                            Please enter an email.
+                        </p>
+                        <p *ngIf="userFormControl['email'].errors?.['email']" class="text-danger">
+                            Please provide a valid email address.
+                        </p>
+                    </div>
+                </div>
+        
+               
+                <div class="form-group">
+                    <label for="gitUrlId">Git URL: </label>
+                    <input class="form-control"  id="gitUrlId" type="text" formControlName="gitUrl">
+
+                    <div *ngIf="userFormControl['gitUrl'].invalid && (userFormControl['gitUrl'].dirty || userFormControl['gitUrl'].touched)">
+                        <p *ngIf="userFormControl['gitUrl'].errors?.['required']" class="text-danger">
+                            Please enter a Git Url.
+                        </p>
+                        <p *ngIf="userFormControl['gitUrl'].errors?.['pattern']" class="text-danger">
+                            Please enter correct git address(Should include github.com).
+                        </p>
+                    </div>
+
+                </div>
+        
+              
+                <section  id="technologyGrp" formArrayName="technologies" class="row technologies">
+                    <h2>Technologies</h2>
+                    <div class="col-md-6">
+                        <p class="text-danger" *ngIf="userFormControl['technologies'].errors?.['required']">Please provide at least one technology.</p>
+                        <ul>
+                            <li *ngFor="let alias of technologies.controls; let i=index" class="row">
+                                <!-- The repeated alias template -->
+                                <div class="col-md-10">
+                                    <input  aria-label="Enter a technology" class="form-control alias" id="alias-{{ i }}" name="techSkill" type="text" [formControlName]="i">
+                                    <p *ngIf="alias.invalid && (alias.dirty && alias.touched)"> 
+                                        <span class="text-danger" *ngIf="alias.errors?.['required']">Field is required.</span>
+                                        <span class="text-danger" *ngIf="alias.errors?.['pattern']">Please provide a valid text.</span>
+                                    </p>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-outline-secondary" (click)="deleteTechnology(i)">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="visually-hidden">Button</span>
+                                      </button>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <button  class="btn btn-primary add-technology" type="button" (click)="addTechnologies()">+ Add Technology</button>
+                    </div>
+                </section>
+        
+                <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+
+        <div class="col-md-6"> 
+            <div class="form-check form-switch">
+                <input class="form-check-input" [checked]="toggeleChecked" type="checkbox" (change)="onToggleChange($event)" role="switch" id="toogleBtn" />
+                <label class="form-check-label" for="toogleBtn" [translate]="'page1.toggleHeading'"></label>
+              </div>
+        </div>
+    </div>
+</article>
