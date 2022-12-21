@@ -1,0 +1,53 @@
+[{
+    "locId":"l1",
+    "productId":1,
+    "userId":1,
+    "stockAvailability":10
+},
+{
+    "locId":"l2",
+    "productId":2,
+    "userId":1,
+    "stockAvailability":5
+},
+{
+    "locId":"l3",
+    "productId":3,
+    "userId":1,
+    "stockAvailability":1
+},
+{
+    "locId":"l1",
+    "productId":1,
+    "userId":2,
+    "stockAvailability":2
+},
+{
+    "locId":"l2",
+    "productId":2,
+    "userId":2,
+    "stockAvailability":50
+},
+{
+    "locId":"l3",
+    "productId":3,
+    "userId":2,
+    "stockAvailability":40
+},{
+    "locId":"l1",
+    "productId":1,
+    "userId":3,
+    "stockAvailability":5
+},{
+    "locId":"l2",
+    "productId":2,
+    "userId":3,
+    "stockAvailability":15
+},
+{
+    "locId":"l3",
+    "productId":3,
+    "userId":3,
+    "stockAvailability":25
+}
+]
