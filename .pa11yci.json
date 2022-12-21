@@ -1,0 +1,9 @@
+{
+    "urls": [
+      "localhost:4200/page1",
+      "localhost:4200/page2",
+      "localhost:4200/page3",
+      "localhost:4200/page4"
+    ]
+  }
+  
