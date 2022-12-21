@@ -1,0 +1,22 @@
+<header class="appHeader">
+    <button  tabindex="0" class="nav-link skip-main" (click)="skiptomain()">Skip to Main Content </button>
+    <section class="appHeader__navigation">
+        <nav>
+            <ul>
+              <li><a [routerLink]="['page1']" routerLinkActive="active">Page1</a></li>
+              <li><a [routerLink]="['page2']" routerLinkActive="active">Page2</a></li>
+              <li><a [routerLink]="['page3']" routerLinkActive="active" [ngClass]="enablePage3 ? 'enabled':'disabled' ">Page3</a></li>
+              <li><a [routerLink]="['page4']" routerLinkActive="active">Page4</a></li>
+            </ul>
+        </nav>
+    </section>
+    <section class="appHeader__language-selection">
+        <label for="languageControl">Language:</label>
+        <select id="languageControl" class="form-select" aria-label="Select a language"  (change)="onLanguageChange($event)">
+            <option *ngFor="let language of languages" [value]="language.key">
+                {{language.title}}
+            </option>
+        </select>
+    </section>
+    
+</header>
