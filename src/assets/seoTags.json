@@ -1,0 +1,18 @@
+{
+    "page1":{
+        "title":"Angular POC Title Page1",
+        "description":"Angular POC description Page1"
+    },
+    "page2":{
+        "title":"Angular POC Title Page2",
+        "description":"Angular POC description Page2"
+    },
+    "page3":{
+        "title":"Angular POC Title Page3",
+        "description":"Angular POC description Page3"
+    },
+    "page4":{
+        "title":"Angular POC Title Page4",
+        "description":"Angular POC description Page4"
+    }
+}
