@@ -1,0 +1,40 @@
+<article class="user-info-container" [ngClass]="languageClass">
+    <h1 [translate]="'page4.heading'"></h1>
+    <section class="row">
+        <section class="user-info-container__users col-md-3">
+            <h2 [translate]="'page4.selectUser'"></h2>
+        
+            <select class="form-select" aria-label="Select user"  (change)="onUserChange($event)">
+                <option selected>Select a user</option>
+                <option *ngFor="let user of users" [value]="user.userId">
+                    {{user.name}}
+                </option>
+            </select>
+        </section>
+    
+        <section   class="user-info-container__products col-md-3">
+            <h2 [translate]="'page4.selectProduct'"></h2>
+            <select class="form-select" aria-label="Select a product"  (change)="onProductChange($event)">
+                <option selected>Select a product</option>
+                <option *ngFor="let product of products" [value]="product.productId">
+                    {{product.name}}
+                </option>
+            </select>
+        </section>
+    </section>
+
+    
+
+    <button id="place-order" class="btn btn-primary user-info-container__place-order" [disabled]="!(selectedProduct && selectedUser)" (click)="placeOrder()">Place Order</button>
+
+    <section class="user-info-container__rewards" *ngIf="rewards">
+        <h2>Reward Detail</h2>
+        <p>You have got <strong>{{rewards.points}}</strong> Points and class as <strong>{{rewards.class}}</strong></p>
+    </section>
+
+    <div class="alert alert-danger user-info-container__error-alerts" role="alert" *ngIf="erroMessage">
+        {{erroMessage}}
+      </div>
+    
+</article>
+
