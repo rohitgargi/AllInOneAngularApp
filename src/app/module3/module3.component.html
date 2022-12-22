@@ -1,0 +1,171 @@
+
+
+<article class="starship-container">
+
+    <h1 [translate]="'page3.heading'"></h1>
+    <section class="starship-container__autoselect">
+        <form [formGroup]="starForm" class="starForm">
+            <label for="ship-autoselect" [translate]="'page3.selectHeading'"></label>
+            <input id="ship-autoselect" type="text" class="form-control" formControlName="typehead" placeholder="Search for Starship!">
+            
+        </form>
+
+        <!-- <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div> -->
+
+        <div class="alert alert-danger user-info-container__error-alerts" role="alert" *ngIf="erroMessage.suggestions && !loading.suggestions">
+            {{erroMessage.suggestions}}
+          </div>
+
+        <section class="info-container">
+            <ul class="suggestions" *ngIf="suggestions.length && !loading.suggestions">
+                <li *ngFor="let item of suggestions" (click)="selectedShip(item)">{{item.name}}</li>
+            </ul>
+
+            <div class="suggestion-spinner" *ngIf="loading.suggestions">
+               
+                <div class="spinner-border spinner-border-sm" role="status" >
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div>Loading...</div>
+            </div>
+            
+    
+            <ul class="suggestions_not-found" *ngIf="!suggestions?.length && starForm.dirty && !loading.suggestions && !(selectedStarShip || filmList && pilotList)">
+                <li>Result not found!</li>
+            </ul>
+        </section>
+        
+    </section>
+    
+
+    <section class="starship-container__selected-item" *ngIf="selectedStarShip">
+        <h2>Selected Starship Information</h2>
+        <ul>
+            <li><strong>Name</strong>:&nbsp;{{selectedStarShip.name}}</li>
+            <li><strong>Manufacturer</strong>:&nbsp;{{selectedStarShip.manufacturer}}</li>
+            <li><strong>Passengers</strong>:&nbsp;{{selectedStarShip.passengers}}</li>
+            <li *ngIf="selectedStarShip.Starship_class"><strong>Starship_class</strong>:&nbsp;{{selectedStarShip.Starship_class}}</li>
+        </ul>
+    </section>
+
+    
+
+    <!-- Films info -->
+    <section class="starship-container__film-info" *ngIf="selectedStarShip">
+        <h3>Films List for the selected Star Ship</h3>
+
+        <ul class="row" *ngIf="filmList">
+            <li *ngFor="let film of filmList" class="col-md-4">
+                <section>
+                    <p>
+                        <strong>Title:&nbsp;</strong>
+                        <span>{{film.title}}</span>
+                    </p>
+                    <p>
+                        <strong>Director:&nbsp;</strong>
+                        <span>{{film.director}}</span>
+                    </p>
+                    <p>
+                        <strong>Producer:&nbsp;</strong>
+                        <span>{{film.producer}}</span>
+                    </p>
+                    <p>
+                        <strong>Release Date:&nbsp;</strong>
+                        <span>{{film.release_date | date: 'dd MMM, YYYY'}}</span>
+                    </p>
+                </section>
+                
+            </li>
+        </ul>
+
+        <!-- Not Found -->
+        <div class="alert alert-info" role="alert"  *ngIf="!filmList && !loading.films">
+            Film list not found for selected starship.
+          </div>
+
+        <!-- Loading -->
+
+        <div class="suggestion-spinner" *ngIf="loading.films">
+               
+            <div class="spinner-border spinner-border-sm" role="status" >
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div>Loading...</div>
+        </div>
+
+        <!-- Errors -->
+
+        <div class="alert alert-danger user-info-container__error-alerts" role="alert" *ngIf="erroMessage.films && !loading.films">
+            {{erroMessage.films}}
+        </div>
+
+    </section>
+
+    <!-- Pilots List -->
+    <section class="starship-container__film-info" *ngIf="selectedStarShip">
+        <h3>Pilots List for the selected Star Ship</h3>
+
+        <ul class="row" *ngIf="pilotList">
+            <li *ngFor="let pilot of pilotList" class="col-md-4">
+                <section>
+                    <p>
+                        <strong>Name:&nbsp;</strong>
+                        <span>{{pilot.name}}</span>
+                    </p>
+                    <p>
+                        <strong>Height:&nbsp;</strong>
+                        <span>{{pilot.height + "cm"}}</span>
+                    </p>
+                    <p>
+                        <strong>Mass:&nbsp;</strong>
+                        <span>{{pilot.mass + 'kg'}}</span>
+                    </p>
+                    <p>
+                        <strong>Hair Color:&nbsp;</strong>
+                        <span>{{pilot.hair_color}}</span>
+                    </p>
+                </section>
+                
+            </li>
+        </ul>
+
+        <!-- Not Found -->
+
+        <div class="alert alert-info" role="alert"  *ngIf="!pilotList && !loading.pilots">
+            Pilot list not found for selected starship.
+          </div>
+
+        <!-- Loading -->
+
+        <div class="suggestion-spinner" *ngIf="loading.pilots">
+               
+            <div class="spinner-border spinner-border-sm" role="status" >
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div>Loading...</div>
+        </div>
+
+        <!-- Errors -->
+
+        <div class="alert alert-danger user-info-container__error-alerts" role="alert" *ngIf="erroMessage.pilots && !loading.pilots">
+            {{erroMessage.pilots}}
+        </div>
+    </section>
+
+
+    <!-- Nothing Selected -->
+
+    <section class="starship-container__nothing-selected">
+        <div class="alert alert-info" role="alert"  *ngIf="!selectedStarShip">
+            Search for starship info and corresponding films and pilots details.
+         </div>
+    </section>
+   
+
+
+
+</article>
+
+
