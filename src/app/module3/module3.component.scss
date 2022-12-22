@@ -1,0 +1,61 @@
+.starship-container{
+    padding: 20px;
+    h1{
+        font-size: 22px;
+    }
+
+    .starForm{
+        position: relative;
+        
+    }
+
+    .info-container{
+        .suggestion-spinner{
+            display: flex;
+            margin: 10px;
+            .spinner-border{
+                margin-top: 5px;
+                margin-left: 5px;
+            }
+        }
+    }
+    &__autoselect{
+        label{
+            display: block;
+            font: 400 16px Roboto;
+            margin-bottom: 5px;
+            color: #444;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            li{
+                border-bottom: 1px solid #eee;
+                padding: 14px;
+                cursor: pointer;
+            }
+        }
+    }
+    &__selected-item{
+        padding: 10px;
+        margin-top: 20px;
+        h2{
+            font-size: 16px;
+        }
+    }
+    &__film-info{
+       padding: 10px;
+        ul{
+            padding: 0;
+            list-style: none;
+            li>section{
+                padding: 10px;
+                border: 1px solid #dedede;
+            }
+        }
+    }
+
+    &__nothing-selected{
+        margin-top: 30px;
+    }
+}
