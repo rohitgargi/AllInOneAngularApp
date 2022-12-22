@@ -1,0 +1,26 @@
+.user-info-container{
+    margin-top: 20px;
+    padding: 10px 30px;
+    h1{
+        font-size: 20px;
+    }
+
+    &__users, &__products{
+        h2{
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    }
+    &__place-order{
+        margin-top:20px;    
+    }
+    &__error-alerts{
+        margin-top: 20px;
+    }
+    &__rewards{
+        h2{
+            font-size: 16px;
+            margin-top:20px;
+        }
+    }
+}
